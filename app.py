@@ -1,12 +1,3 @@
-# Open Source:
-# Under MIT Licence
-
-# [+] API By Flexboy & ARII
-# [+] Created by Starexx
-
-# -—- -—- -—- -—- -—- -—- -—- -—-
-
-
 from flask import Flask, request, jsonify
 import requests
 
@@ -20,10 +11,10 @@ def index():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starexx</title>
+    <title>Free Fire Player Search</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-         @font-face {
+        @font-face {
             font-family: 'GFF Latin';
             src: url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Thin.eot');
             src: local('GFF Latin Thin'), local('GFF-Latin-Thin'),
@@ -338,34 +329,32 @@ def index():
                 resultsContainer.style.display = 'none';
                 playersGrid.innerHTML = '';
                 
-                fetch(`https://ariflexlabs-search-api.vercel.app/search?name=${encodeURIComponent(name)}`)
+                fetch(`/search?name=${encodeURIComponent(name)}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
                         return response.json();
                     })
-                    .then(data => {
+                    .then(players => {
                         loadingElement.style.display = 'none';
                         
-                        let allPlayers = [];
-                        data.forEach(regionData => {
-                            if (regionData.result?.player) {
-                                allPlayers = [...allPlayers, ...regionData.result.player];
-                            }
-                        });
+                        if (players.error) {
+                            throw new Error(players.error);
+                        }
                         
-                        if (allPlayers.length === 0) {
+                        if (players.length === 0) {
                             noResultsElement.style.display = 'block';
                             return;
                         }
                         
-                        displayResults(allPlayers);
+                        displayResults(players);
                         resultsContainer.style.display = 'block';
                     })
                     .catch(error => {
                         console.error('Error:', error);
                         loadingElement.style.display = 'none';
+                        errorElement.textContent = error.message || 'An error occurred. Please try again later.';
                         errorElement.style.display = 'block';
                     });
             }
@@ -405,13 +394,13 @@ def index():
             function loadPlayerDetails(cardElement, player) {
                 const detailsContainer = cardElement.querySelector('.player-details');
                 
-                const apiUrl = `https://ariiflexlabs-playerinfo-icxc.onrender.com/ff_info?uid=${player.accountId}&region=${player.region}`;
+                const apiUrl = `/player_info?uid=${player.accountId}&region=${player.region}`;
                 
                 detailsContainer.innerHTML = `
                     <div class="detail-row">
                         <div class="detail-label"></div>
                         <div class="detail-value">
-                            <a href="${apiUrl}" class="view-info-link" target="_blank">View Details</a>
+                            <a href="https://sigma-ff-info-api.vercel.app/player_info?uid=${player.accountId}&region=${player.region}&key=SIGMAxBOY" class="view-info-link" target="_blank">View Details</a>
                         </div>
                     </div>
                 `;
@@ -452,7 +441,7 @@ def player_info():
         return jsonify({'error': 'UID and region parameters are required'}), 400
     
     try:
-        info_url = f"https://ariiflexlabs-playerinfo-icxc.onrender.com/ff_info?uid={uid}&region={region}"
+        info_url = f"https://sigma-ff-info-api.vercel.app/player_info?uid={uid}&region={region}&key=SIGMAxBOY"
         response = requests.get(info_url)
         response.raise_for_status()
         return jsonify(response.json())
