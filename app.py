@@ -1,3 +1,11 @@
+# ░██████╗████████╗░█████╗░██████╗░███████╗██╗░░██╗██╗  ██╗
+# ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝╚██╗██╔╝╚██╗██╔╝
+# ╚█████╗░░░░██║░░░███████║██████╔╝█████╗░░░╚███╔╝░░╚███╔╝░
+# ░╚═══██╗░░░██║░░░██╔══██║██╔══██╗██╔══╝░░░██╔██╗░░██╔██╗░
+# ██████╔╝░░░██║░░░██║░░██║██║░░██║███████╗██╔╝╚██╗██╔╝╚██╗
+# ╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝
+# Created by Starexx                            API by Flexboy & ARII
+
 from flask import Flask, request, jsonify
 import requests
 
@@ -52,7 +60,6 @@ def index():
             font-style: normal;
             font-display: swap;
         }
-
         @font-face {
             font-family: 'GFF Latin';
             src: url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Medium.eot');
@@ -394,14 +401,15 @@ def index():
             function loadPlayerDetails(cardElement, player) {
                 const detailsContainer = cardElement.querySelector('.player-details');
                 
-                const apiUrl = `/player_info?uid=${player.accountId}&region=${player.region}`;
+                const apiUrl = `/ff_info?uid=${player.accountId}&region=${player.region}`;
                 
                 detailsContainer.innerHTML = `
                     <div class="detail-row">
                         <div class="detail-label"></div>
                         <div class="detail-value">
-                            <a href="https://sigma-ff-info-api.vercel.app/player_info?uid=${player.accountId}&region=${player.region}&key=SIGMAxBOY" class="view-info-link" target="_blank">View Details</a>
-                        </div>
+                            <a href="https://ariiflexlabs-playerinfo-icxc.onrender.com/ff_info?uid=${player.accountId}&region=${player.region.toLowerCase()}"
+                            class="view-info-link" target="_blank">View Details</a>
+                            </div>
                     </div>
                 `;
             }
@@ -432,7 +440,7 @@ def search_players():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/player_info')
+@app.route('/ff_info')
 def player_info():
     uid = request.args.get('uid')
     region = request.args.get('region')
@@ -441,7 +449,7 @@ def player_info():
         return jsonify({'error': 'UID and region parameters are required'}), 400
     
     try:
-        info_url = f"https://sigma-ff-info-api.vercel.app/player_info?uid={uid}&region={region}&key=SIGMAxBOY"
+        info_url = f"https://ariiflexlabs-playerinfo-icxc.onrender.com/ff_info?uid={uid}&region={region}"
         response = requests.get(info_url)
         response.raise_for_status()
         return jsonify(response.json())
