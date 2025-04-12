@@ -1,3 +1,12 @@
+# Open Source:
+# Under MIT Licence
+
+# [+] API By Flexboy & ARII
+# [+] Created by Starexx
+
+# -—- -—- -—- -—- -—- -—- -—- -—-
+
+
 from flask import Flask, request, jsonify
 import requests
 
@@ -11,7 +20,7 @@ def index():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire Player Search</title>
+    <title>Starexx</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
          @font-face {
@@ -65,39 +74,208 @@ def index():
             font-style: normal;
             font-display: swap;
         }
-      * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'GFF Latin', sans-serif; }
-      body { background-color: #000; color: white; padding: 20px; background-image: url('https://raw.githubusercontent.com/starexxx/Fonts/main/36b630e138a0ad03d3c15c6c52d46044.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; user-select: none; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-     .container { max-width: 800px; margin: 0 auto; background-color: transparent; padding: 20px; }
-      header { text-align: left; margin-bottom: 30px; }
-      h1 { color: #fff; margin-bottom: 10px; font-size: 28px; font-weight: 500; }
-      .search-container { position: relative; margin-bottom: 30px; }
-      #playerName { width: 100%; padding: 12px 50px 12px 15px; border-bottom: 1px solid #fff; border-top: none; outline: none; border-left: none; border-right: none; border-radius: 0px; background-color: transparent; color: #91a6bf; font-size: 16px; }
-      #playerName::placeholder { color: #91a6bf; }
-      #searchBtn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: url('https://raw.githubusercontent.com/starexxx/Fonts/main/download.svg') no-repeat center; background-size: contain; width: 20px; height: 20px; border: none; cursor: pointer; }
-      .rc { display: none; }
-      .players-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; padding: 15px 0; }
-      .player-card { background-color: rgba(0, 0, 0, 0.5); padding: 15px; cursor: pointer; transition: all 0.3s ease; }
-      .player-card:hover { transform: translateY(-3px); }
-      .player-name { font-weight: bold; color: #fff; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 16px; }
-      .player-info { font-size: 14px; color: #aaa; margin-bottom: 5px; }
-      .player-details { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #aaa; }
-      .player-card.expanded .player-details { display: block; }
-      .detail-row { display: flex; margin-bottom: 8px; }
-      .detail-label { font-weight: bold; color: #fff; width: 140px; flex-shrink: 0; }
-      .detail-value { flex: 1; color: #ddd; word-break: break-word; }
-      .loading { display: none; text-align: center; color: white; margin: 20px 0; }
-      .error-message { color: #ff6b6b; text-align: center; margin: 20px 0; display: none; font-weight: bold; }
-      .no-results { text-align: center; color: #91a6bf; padding: 20px; display: none; font-size: 18px; }
-      footer { text-align: center; margin-top: 40px; color: #91a6bf; font-size: 14px; }
-      .view-info-link { color: #4dabf7; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; }
-      .view-info-link:hover { text-decoration: underline; }
-      @media (max-width: 600px) {
-          .players-grid { grid-template-columns: 1fr; }
-           h1 { font-size: 24px; }
-          .detail-label { width: 120px; font-size: 14px; }
-          .detail-value { font-size: 14px; }
-}
-  
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'GFF Latin', sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            background-image: url('https://raw.githubusercontent.com/starexxx/Fonts/main/36b630e138a0ad03d3c15c6c52d46044.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 500;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        #playerName {
+            width: 100%;
+            padding: 12px 50px 12px 15px;
+            border-bottom: 1px solid #fff;
+            border-top: none;
+            outline: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0px;
+            background-color: transparent;
+            color: #91a6bf;
+            font-size: 16px;
+        }
+        #playerName::placeholder {color: #91a6bf;}
+        #searchBtn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: url('https://raw.githubusercontent.com/starexxx/Fonts/main/download.svg') no-repeat center;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .results-container {
+            display: none;
+        }
+        
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            padding: 15px 0;
+        }
+        
+        .player-card {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .player-name {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 16px;
+        }
+        
+        .player-info {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        
+        .player-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #aaa;
+        }
+        
+        .player-card.expanded .player-details {
+            display: block;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #fff;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #ddd;
+            word-break: break-word;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: white;
+            margin: 20px 0;
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+            font-weight: bold;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: #91a6bf;
+            padding: 20px;
+            display: none;
+            font-size: 18px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #91a6bf;
+            font-size: 14px;
+        }
+        
+        .view-info-link {
+            color: #4dabf7;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .view-info-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .detail-label {
+                width: 120px;
+                font-size: 14px;
+            }
+            
+            .detail-value {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -241,7 +419,7 @@ def index():
         });
     </script>
 </body>
-</html>    
+</html>
     '''
 
 @app.route('/search')
