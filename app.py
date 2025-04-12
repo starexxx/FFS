@@ -238,7 +238,7 @@ def index():
         }
         
         .view-info-link {
-            color: #4dabf7;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
@@ -329,7 +329,7 @@ def index():
                 resultsContainer.style.display = 'none';
                 playersGrid.innerHTML = '';
                 
-                fetch(`/search?name=${encodeURIComponent(name)}`)
+                fetch(`/a0f9e8da0f9e8da0f9e8d?a0f9e8da0f9e8d=${encodeURIComponent(name)}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -394,7 +394,7 @@ def index():
             function loadPlayerDetails(cardElement, player) {
                 const detailsContainer = cardElement.querySelector('.player-details');
                 
-                const apiUrl = `/player_info?uid=${player.accountId}&region=${player.region}`;
+                const apiUrl = `/f845e9f4b7e372c0f4d236d8f6a3e2d1a9c8b7a6f5e4d3c2b1a0f9e8d?7c6b5a4=${player.accountId}&a0f9e8d=${player.region}`;
                 
                 detailsContainer.innerHTML = `
                     <div class="detail-row">
@@ -411,9 +411,9 @@ def index():
 </html>
     '''
 
-@app.route('/search')
+@app.route('/a0f9e8da0f9e8da0f9e8d')
 def search_players():
-    name = request.args.get('name')
+    name = request.args.get('a0f9e8da0f9e8d')
     if not name:
         return jsonify({'error': 'Name parameter is required'}), 400
     
@@ -432,16 +432,16 @@ def search_players():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/player_info')
+@app.route('/f845e9f4b7e372c0f4d236d8f6a3e2d1a9c8b7a6f5e4d3c2b1')
 def player_info():
-    uid = request.args.get('uid')
-    region = request.args.get('region')
+    uid = request.args.get('7c6b5a4')
+    region = request.args.get('a0f9e8d')
     
     if not uid or not region:
         return jsonify({'error': 'UID and region parameters are required'}), 400
     
     try:
-        info_url = f"https://sigma-ff-info-api.vercel.app/player_info?uid={uid}&region={region}&key=SIGMAxBOY"
+        info_url = f"https://ariiflexlabs-playerinfo-icxc.onrender.com/ff_info?uid={uid}&region={region}"
         response = requests.get(info_url)
         response.raise_for_status()
         return jsonify(response.json())
