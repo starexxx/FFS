@@ -22,56 +22,57 @@ def index():
     <title>Free Fire Player Search</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'GFF Latin';
-            src: url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Thin.eot');
-            src: local('GFF Latin Thin'), local('GFF-Latin-Thin'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Thin.eot?#iefix') format('embedded-opentype'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Thin.woff2') format('woff2'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Thin.woff') format('woff'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Thin.ttf') format('truetype');
-            font-weight: 100;
-            font-style: normal;
-            font-display: swap;
-        }
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('Fonts/GFF-Latin-Thin.eot');
+    src: local('GFF Latin Thin'), local('GFF-Latin-Thin'),
+        url('Fonts/GFF-Latin-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/GFF-Latin-Thin.woff2') format('woff2'),
+        url('Fonts/GFF-Latin-Thin.woff') format('woff'),
+        url('Fonts/GFF-Latin-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
 
-        @font-face {
-            font-family: 'GFF Latin';
-            src: url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Bold.eot');
-            src: local('GFF Latin Bold'), local('GFF-Latin-Bold'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Bold.eot?#iefix') format('embedded-opentype'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Bold.woff2') format('woff2'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Bold.woff') format('woff'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Bold.ttf') format('truetype');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('Fonts/GFF-Latin-Bold.eot');
+    src: local('GFF Latin Bold'), local('GFF-Latin-Bold'),
+        url('Fonts/GFF-Latin-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/GFF-Latin-Bold.woff2') format('woff2'),
+        url('Fonts/GFF-Latin-Bold.woff') format('woff'),
+        url('Fonts/GFF-Latin-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
-        @font-face {
-            font-family: 'GFF Latin';
-            src: url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Regular.eot');
-            src: local('GFF Latin Regular'), local('GFF-Latin-Regular'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Regular.eot?#iefix') format('embedded-opentype'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Regular.woff2') format('woff2'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Regular.woff') format('woff'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'GFF Latin';
-            src: url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Medium.eot');
-            src: local('GFF Latin Medium'), local('GFF-Latin-Medium'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Medium.eot?#iefix') format('embedded-opentype'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Medium.woff2') format('woff2'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Medium.woff') format('woff'),
-                url('https://raw.githubusercontent.com/starexxx/Fonts/main/GFF-Latin-Medium.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('Fonts/GFF-Latin-Regular.eot');
+    src: local('GFF Latin Regular'), local('GFF-Latin-Regular'),
+        url('Fonts/GFF-Latin-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/GFF-Latin-Regular.woff2') format('woff2'),
+        url('Fonts/GFF-Latin-Regular.woff') format('woff'),
+        url('Fonts/GFF-Latin-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('Fonts/GFF-Latin-Medium.eot');
+    src: local('GFF Latin Medium'), local('GFF-Latin-Medium'),
+        url('Fonts/GFF-Latin-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/GFF-Latin-Medium.woff2') format('woff2'),
+        url('Fonts/GFF-Latin-Medium.woff') format('woff'),
+        url('Fonts/GFF-Latin-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
         * {
             margin: 0;
@@ -84,7 +85,7 @@ def index():
             background-color: #000;
             color: white;
             padding: 20px;
-            background-image: url('https://raw.githubusercontent.com/starexxx/Fonts/main/36b630e138a0ad03d3c15c6c52d46044.jpg');
+            background-image: url('Assets/36b630e138a0ad03d3c15c6c52d46044.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -139,7 +140,7 @@ def index():
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            background: url('https://raw.githubusercontent.com/starexxx/Fonts/main/download.svg') no-repeat center;
+            background: url('Assets/download.svg') no-repeat center;
             background-size: contain;
             width: 20px;
             height: 20px;
