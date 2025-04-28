@@ -85,7 +85,7 @@ def index():
             background-color: #000;
             color: white;
             padding: 20px;
-            background-image: url('Assets/36b630e138a0ad03d3c15c6c52d46044.jpg');
+            background-image: url('https://raw.githubusercontent.com/starexxx/FFS/main/Assets/36b630e138a0ad03d3c15c6c52d46044.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -140,7 +140,7 @@ def index():
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            background: url('Assets/download.svg') no-repeat center;
+            background: url('https://raw.githubusercontent.com/starexxx/FFS/main/Assets/download.svg') no-repeat center;
             background-size: contain;
             width: 20px;
             height: 20px;
